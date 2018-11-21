@@ -121,38 +121,6 @@ public interface AffairsApi {
 	void affairsDetails();
 	
 	/**
-	 * @api {post} /affaris/addAffairs 添加时事
-	 * @apiName addAffair
-	 * @apiGroup affaris
-	 * @apiVersion 0.0.1
-	 * @apiDescription 添加时事
-	 * 
-	 * @apiParam {String} title 时事标题
-	 * @apiParam {String} affairsPic 时事图片
-	 * @apiParam {String} content 时事内容
-	 * @apiParam {Long} typeId 时事类型
-	 * @apiParam {String} subordinate 发布地
-	 * 
-	 * @apiSuccess {String} code 结果码
-	 * @apiSuccess {String} message 消息说明
-	 * @apiSuccess {Long} result 用户名 
-	 * @apiSuccessExample Success-Response:
-	 * HTTP/1.1 200
-	 * {
-	 * "code": "200",
-	 * "message": "",
-	 * "result": 1
-	 * @apiErrorExample Error-Response:
-	 * HTTP/1.1 400
-	 * {
-	 *     "code":400,
-	 *     "message":""
-	 * }
-	 * 
-	 * */
-	void addAffair();
-	
-	/**
 	 * @api {get} /affaris/type  获取时事类别信息
 	 * @apiName getAffairsType
 	 * @apiGroup affaris
