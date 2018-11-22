@@ -56,6 +56,8 @@ public interface UserLoignApi {
 	 * 
 	 * @apiParam {Long} schoolNum  学号
 	 * @apiParam {String} password  密码
+	 * @apiParam {String} phone  电话号码
+	 * @apiParam {String} code  验证码
 	 * 
 	 * @apiSuccess {String} code 结果码
 	 * @apiSuccess {String} message 消息说明
@@ -77,4 +79,31 @@ public interface UserLoignApi {
 	 * }
 	 * */
 	void userBinding();
+	
+	/**
+	 * @api {post} /user/sms 短信验证码
+	 * @apiName smsget
+	 * @apiGroup user
+	 * @apiVersion 0.0.1
+	 * @apiDescription 短信验证码
+	 * 
+	 * @apiParam {String} phone 手机
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+	 * "code": "200",
+	 * "message": ""
+	 * } 
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * */
+	void smsget();
+	
 }
