@@ -11,11 +11,11 @@ package api;
 public interface UploadApi {
 	
     /**
-	 * @api {post} /upload/pic 上传图片通用接口（支持批量）
+	 * @api {post} /upload/pic 上传图片通用接口（支持批量,非OSS）
 	 * @apiName doUploadPic
 	 * @apiGroup upload
 	 * @apiVersion 0.0.1
-	 * @apiDescription 上传图片通用接口（支持批量）
+	 * @apiDescription 上传图片通用接口（支持批量,非OSS）
 	 * 
 	 * @apiParam {File} files 图片文件
 	 * @apiParam {String} picType 业务类型（vote,affairs,userLogin......）
