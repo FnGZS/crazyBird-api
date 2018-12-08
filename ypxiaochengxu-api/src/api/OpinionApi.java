@@ -35,6 +35,5 @@ public class OpinionApi {
 	 *     "code":400,
 	 *     "message":""
 	 * }
-	 * 
 	 * */
 }
