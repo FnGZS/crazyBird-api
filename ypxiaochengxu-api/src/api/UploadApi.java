@@ -42,4 +42,37 @@ public interface UploadApi {
 	 * 
 	 */	
 	void doUploadPic();
+	
+	/**
+	 * @api {post} /upload/avatar 上传单张图片通用接口（非OSS）
+	 * @apiName doUploadAvr
+	 * @apiGroup upload
+	 * @apiVersion 0.0.1
+	 * @apiDescription 上传单张图片通用接口（非OSS）
+	 * 
+	 * @apiParam {File} file 图片文件
+	 * @apiParam {String} picType 业务类型（vote,affairs,userLogin......）
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {object} urlList 图片路径
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+   	 * "code": "200",
+     * "message": "",
+     * "urlList": [
+     *      "www.sxscott.com/crazyBirdimg/testtest/testtest_20181122185111004.jpg"
+     *    
+     * ]
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */	
+	void doUploadAvr();
 }
