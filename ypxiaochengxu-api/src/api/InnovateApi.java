@@ -78,4 +78,31 @@ public interface InnovateApi {
 	 * 
 	 */	
 	void getInnovateEnterprise();
+	/**
+	 * @api {get} /innovate/background 创业园模块首页背景图片
+	 * @apiName getInnovateBackground
+	 * @apiGroup innovate
+	 * @apiVersion 0.0.1
+	 * @apiDescription 创业园模块首页背景图片
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {String} background 创业园背景图片地址
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+   	 * "code": "200",
+     * "message": "",
+     * "background":"xxxxx.jpg",
+     * }
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */	
+	void getInnovateBackground();
 }
