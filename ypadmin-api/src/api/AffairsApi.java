@@ -67,7 +67,9 @@ public interface AffairsApi {
 	 *        "brows": 1,         
 	 *        "subordinate": "招就处",         
 	 *        "gmtCreated": "2018-10-27 20:50:37.0"         
-	 *    }                
+	 *    }   
+	 *    ]
+	 * }             
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
 	 * {
@@ -110,6 +112,7 @@ public interface AffairsApi {
 	 * "brows": 1, 
 	 * "subordinate": "招就处", 
 	 * "gmtCreated": "2018-10-27 21:02:16.0" 
+	 * }
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
 	 * {
@@ -119,38 +122,6 @@ public interface AffairsApi {
 	 * 
 	 * */
 	void affairsDetails();
-	
-	/**
-	 * @api {post} /affaris/addAffairs 添加时事
-	 * @apiName addAffair
-	 * @apiGroup affaris
-	 * @apiVersion 0.0.1
-	 * @apiDescription 添加时事
-	 * 
-	 * @apiParam {String} title 时事标题
-	 * @apiParam {String} affairsPic 时事图片
-	 * @apiParam {String} content 时事内容
-	 * @apiParam {Long} typeId 时事类型
-	 * @apiParam {String} subordinate 发布地
-	 * 
-	 * @apiSuccess {String} code 结果码
-	 * @apiSuccess {String} message 消息说明
-	 * @apiSuccess {Long} result 用户名 
-	 * @apiSuccessExample Success-Response:
-	 * HTTP/1.1 200
-	 * {
-	 * "code": "200",
-	 * "message": "",
-	 * "result": 1
-	 * @apiErrorExample Error-Response:
-	 * HTTP/1.1 400
-	 * {
-	 *     "code":400,
-	 *     "message":""
-	 * }
-	 * 
-	 * */
-	void addAffair();
 	
 	/**
 	 * @api {get} /affaris/type  获取时事类别信息
@@ -178,7 +149,8 @@ public interface AffairsApi {
 	 *         "typeid": 2, 
 	 *         "typeName": "校区动态"         
 	 *     }                 
-	 *  ]                
+	 *  ]
+	 * }       
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
 	 * {
@@ -207,6 +179,7 @@ public interface AffairsApi {
 	 * "code": "200",
 	 * "message": "",
 	 * "result": 1
+	 * }
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
 	 * {
@@ -240,6 +213,7 @@ public interface AffairsApi {
 	 * "code": "200",
 	 * "message": "",
 	 * "result": 1
+	 * }
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
 	 * {
@@ -249,4 +223,37 @@ public interface AffairsApi {
 	 * 
 	 * */
 	void updateAffair();
+	
+	/**
+	 * @api {post} /affaris/addAffairs  添加时事
+	 * @apiName addAffairs
+	 * @apiGroup affaris
+	 * @apiVersion 0.0.1
+	 * @apiDescription  添加时事
+	 * 
+	 * @apiParam {String} title 时事标题
+	 * @apiParam {String} affairsPic 时事图片
+	 * @apiParam {String} content 时事内容
+	 * @apiParam {Long} typeId 时事类型
+	 * @apiParam {String} subordinate 发布地
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {Long} result 结果 
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+	 * "code": "200",
+	 * "message": "",
+	 * "result": 1
+	 * }
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * 
+	 * */
+	void addaffairs();
 }
