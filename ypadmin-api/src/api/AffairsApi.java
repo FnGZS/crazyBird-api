@@ -133,8 +133,8 @@ public interface AffairsApi {
 	 * @apiSuccess {String} code 结果码
 	 * @apiSuccess {String} message 消息说明
 	 * @apiSuccess {object} tags 
-	 * @apiSuccess {long} typeid 类别id
-	 * @apiSuccess {String} typeName 类别名
+	 * @apiSuccess {long} tags.typeid 类别id
+	 * @apiSuccess {String} tags.typeName 类别名
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
 	 * {
@@ -256,4 +256,62 @@ public interface AffairsApi {
 	 * 
 	 * */
 	void addaffairs();
+	
+	/**
+	 * @api {post} /affaris/addType  添加类别
+	 * @apiName addAffairsType
+	 * @apiGroup affaris
+	 * @apiVersion 0.0.1
+	 * @apiDescription  添加类别
+	 * 
+	 * @apiParam {String} typeName 类别名字
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {Long} result 结果 
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+	 * "code": "200",
+	 * "message": "",
+	 * "result": 1
+	 * }
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * 
+	 * */
+	void addAffairsType();
+	
+	/**
+	 * @api {get} /affaris/deleteType  删除类别
+	 * @apiName deleteAffairsType
+	 * @apiGroup affaris
+	 * @apiVersion 0.0.1
+	 * @apiDescription  删除类别
+	 * 
+	 * @apiParam {Long} id 类别id
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {Long} result 结果 
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+	 * "code": "200",
+	 * "message": "",
+	 * "result": 1
+	 * }
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * 
+	 * */
+	void deleteAffairsType();
 }
