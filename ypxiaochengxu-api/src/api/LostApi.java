@@ -37,13 +37,13 @@ public interface LostApi {
 	 * @apiSuccess {Integer} publisher 失物发布者id
 	 * @apiSuccess {String} foundPic 失物图片
 	 * @apiSuccess {String} content 失物内容
+	 * @apiSuccess {String} contact 联系方式
+	 * @apiSuccess {String} address 地址
+	 * @apiSuccess {Integer} messageId 物品分类
 	 * @apiSuccess {Integer} typeId 失物分类id
 	 * @apiSuccess {Integer} isExamine 失物审核状态
 	 * @apiSuccess {Integer} brow 失物浏览量
 	 * @apiSuccess {Integer} isSolve 失物解决状态
-	 * @apiSuccess {Integer} latitude 纬度
-	 * @apiSuccess {Integer} longitude 经度
-	 * @apiSuccess {Integer} messageId 物品分类
 	 * @apiSuccess {String} gmtCreated 发布时间 
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
@@ -61,14 +61,15 @@ public interface LostApi {
      *       "publisher": 0401160111,
      *       "foundPic": "http://www.ypc.edu.cn/yp/images/f1.png",
      *       "content": "本人丢了一把雨伞",
+     *       "contact": "电话：123456789",
+     *       "address": "绍兴文理学院元培学院",
+     *       "messageId": 2,
      *       "typeId": 1,
      *       "isExamine": 1,
      *       "brow": 0,
      *       "isSolve": 1,
-     *       "gmtCreated": "2018-12-04 19:51:34.0",
-     *       "latitude": 345,
-     *       "longitude": 357,
-     *       "messageId": 2
+     *       "gmtCreated": "2018-12-04 19:51:34.0"
+     *       
      *   },
      *   {
      *       "id": 2,
@@ -76,14 +77,15 @@ public interface LostApi {
      *       "publisher": 0401160111,
      *       "foundPic": "http://www.ypc.edu.cn/yp/images/f1.png",
      *       "content": "本人丢了一U盘",
+     *       "contact": "电话：123456789",
+     *       "address": "绍兴文理学院元培学院",
+     *       "messageId": 2,
      *       "typeId": 3,
      *       "isExamine": 2,
      *       "brow": 1,
      *       "isSolve": 1,
-     *       "gmtCreated": "2018-12-04 19:51:34.0",
-     *       "latitude": 357,
-     *       "longitude": 347,
-     *       "messageId": 2
+     *       "gmtCreated": "2018-12-04 19:51:34.0"
+     *       
      *   }   
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
@@ -107,17 +109,18 @@ public interface LostApi {
 	 * @apiSuccess {String} code 结果码
 	 * @apiSuccess {String} message 消息说明
 	 * @apiSuccess {object} details 列表
+	 * @apiSuccess {Integer} id 失物id
 	 * @apiSuccess {String} title 失物标题
 	 * @apiSuccess {Integer} publisher 失物发布者id
 	 * @apiSuccess {String} foundPic 失物图片
 	 * @apiSuccess {String} content 失物内容
+	 * @apiSuccess {String} contact 联系方式
+	 * @apiSuccess {String} address 地址
+	 * @apiSuccess {Integer} messageId 物品分类
 	 * @apiSuccess {Integer} typeId 失物分类id
 	 * @apiSuccess {Integer} isExamine 失物审核状态
 	 * @apiSuccess {Integer} brow 失物浏览量
 	 * @apiSuccess {Integer} isSolve 失物解决状态
-	 * @apiSuccess {Integer} latitude 纬度
-	 * @apiSuccess {Integer} longitude 经度
-	 * @apiSuccess {Integer} messageId 物品分类
 	 * @apiSuccess {String} gmtCreated 发布时间 
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
@@ -126,19 +129,28 @@ public interface LostApi {
 	 * "message": "",
 	 * "items": [
 	 * 		{
+	 * "code": "200",
+	 * "message": null,
+	 * "pageNo": 1,
+	 * "pageSize": 20,
+	 * "pageCount": 1,
+	 * "recordCount": 2,
+	 * "items": [
+	 * 		{
      *       "id": 1,
      *       "title": "谁看到我的花色雨伞",
      *       "publisher": 0401160111,
      *       "foundPic": "http://www.ypc.edu.cn/yp/images/f1.png",
      *       "content": "本人丢了一把雨伞",
+     *       "contact": "电话：123456789",
+     *       "address": "绍兴文理学院元培学院",
+     *       "messageId": 2,
      *       "typeId": 1,
      *       "isExamine": 1,
      *       "brow": 0,
      *       "isSolve": 1,
-     *       "gmtCreated": "2018-12-04 19:51:34.0",
-     *       "latitude": 345,
-     *       "longitude": 357,
-     *       "messageId": 2
+     *       "gmtCreated": "2018-12-04 19:51:34.0"
+     *       
      *   }
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
@@ -265,10 +277,10 @@ public interface LostApi {
 	 * @apiParam {String} title  失物标题
 	 * @apiParam {String} foundPic  失物图片
 	 * @apiParam {String} content  详情
+	 * @apiParam {String} contact 联系方式
+	 * @apiParam {String} address 地址
 	 * @apiParam {Integer} typeId  失物分类id
 	 * @apiParam {Integer} messageId  失物物品类别id
-	 * @apiParam {Integer} latitude  纬度
-	 * @apiParam {Integer} longitude  经度
 	 * 
 	 * @apiSuccess {String} code 结果码
 	 * @apiSuccess {String} message 消息说明
@@ -287,5 +299,104 @@ public interface LostApi {
 	 * 
 	 * */
 	void setLostInput();
+	
+	/**
+	 * @api {post} /lost//lostCommentIn 用户评论
+	 * @apiName setLostCommentIn
+	 * @apiGroup lost
+	 * @apiVersion 0.0.1
+	 * @apiDescription 用户评论
+	 * 
+	 * @apiParam {Integer} commentId  从属评论ID
+	 * @apiParam {String} comment  评论内容
+	 * @apiParam {Integer} articleId  所属文章ID
+	 * @apiParam {Integer} replyId 回复ID
+	 * @apiParam {Integer} replyedId 被回复ID
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+	 *      "code": "200",
+	 *      "message": "回复成功",
+	 * }
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * 
+	 * */
+	void setLostCommentIn();
+	
+	/**
+	 * @api {get} /lost/getLostComment  获取评论
+	 * @apiName getLostComment
+	 * @apiGroup lost
+	 * @apiVersion 0.0.1
+	 * @apiDescription  获取评论
+	 * 
+	 * @apiParam {Integer} articleId 文章ID
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {object} items 主评论列表 
+	 * @apiSuccess {Integer} id 评论id
+	 * @apiSuccess {String} comment 评论内容
+	 * @apiSuccess {Integer} articleId 所属文章ID
+	 * @apiSuccess {object} item 回复评论列表
+	 * @apiSuccess {Integer} id 回复评论ID
+	 * @apiSuccess {Integer} commentId 回复的评论ID
+	 * @apiSuccess {String} comment 回复的评论内容
+	 * @apiSuccess {Integer} articleId 所属文章ID
+	 * @apiSuccess {Integer} replyId 回复的评论ID
+	 * @apiSuccess {Integer} replyedId 被回复的评论的ID
+	 * @apiSuccess {String} gmtCreated 回复评论的时间
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 * {
+	 * "code": "200",
+	 * "message": null,
+	 * "pageNo": 1,
+	 * "pageSize": 20,
+	 * "pageCount": 1,
+	 * "recordCount": 3,
+	 * "items": [
+     *  {
+     *       "id": 13,
+     *       "comment": "这个人我认识",
+     *       "articleId": 2,
+     *       "gmtCreated": "2018-12-08 16:56:19.0",
+     *       "item": []
+     *   },
+     *   {
+     *       "id": 1,
+     *       "comment": "666",
+     *       "articleId": 2,
+     *     	 "gmtCreated": "2018-12-08 16:56:19.0",
+     *       "item": [
+     *           {
+     *               "id": 11,
+     *               "commentId": 1,
+     *               "comment": "老哥稳！",
+     *               "articleId": 0,
+     *               "replyId": 1,
+     *               "replyedId": 0,
+     *               "gmtCreated": "2018-12-08 16:56:19.0"
+     *           },
+     *       ]
+     *   }
+     * ]        
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * 
+	 * */
+	void getLostComment();
 }
 
