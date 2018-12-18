@@ -288,7 +288,7 @@ public interface SecondaryApi {
 	void searchSecondaryGoods();
 	
     /**
-	 * @api {get} /secondary/search  得到某分类的商品列表
+	 * @api {get} /secondary/list  得到某分类的商品列表
 	 * @apiName getSecondaryGoodsList
 	 * @apiGroup secondary
 	 * @apiVersion 0.0.1
@@ -651,17 +651,17 @@ public interface SecondaryApi {
 	void getSecondaryGoodsByUser();
 	
     /**
-	 * @api {get} /secondary/create  发布二手商品
+	 * @api {post} /secondary/create  发布二手商品
 	 * @apiName createSecondaryGoods
 	 * @apiGroup secondary
 	 * @apiVersion 0.0.1
 	 * @apiDescription 发布二手商品
 	 * 
 	 * @apiParam {Long} userId
-	 * @apiSuccess {String} goodsTitle 商品标题
-	 * @apiSuccess {String} goodsContent 商品内容
-	 * @apiSuccess {String} goodsImag 商品图片
-	 * @apiSuccess {String} postion 位置
+	 * @apiParam {String} goodsTitle 商品标题
+	 * @apiParam {String} goodsContent 商品内容
+	 * @apiParam {String} goodsImag 商品图片
+	 * @apiParam {String} postion 位置
 	 * @apiParam {int} goodsType  商品类型
 	 * @apiParam {int} goodsWay  售卖形式
 	 * @apiParam {int} tradingWay 交易方式
