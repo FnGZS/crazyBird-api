@@ -162,7 +162,7 @@ public interface AffairsApi {
 	void getAffairsType();
 	
 	/**
-	 * @api {post} /affaris/delete  删除时事
+	 * @api {get} /affaris/delete  删除时事
 	 * @apiName addAffair
 	 * @apiGroup affaris
 	 * @apiVersion 0.0.1
