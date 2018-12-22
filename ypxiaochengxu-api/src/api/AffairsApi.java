@@ -30,13 +30,13 @@ public interface AffairsApi {
 	 * @apiSuccess {Integer} pageCount 总页数
 	 * @apiSuccess {Integer} recordCount 总记录数
 	 * @apiSuccess {object} items 列表
-	 * @apiSuccess {Long} id 时事id
-	 * @apiSuccess {String} title 时事标题
-	 * @apiSuccess {String} affairsPic 时事图片
-	 * @apiSuccess {String} content 时事内容
-	 * @apiSuccess {Long} typeId 时事类型
-	 * @apiSuccess {Long} brows 浏览量
-	 * @apiSuccess {String} subordinate 发布地
+	 * @apiSuccess {Long} items.id 时事id
+	 * @apiSuccess {String} items.title 时事标题
+	 * @apiSuccess {String} items.affairsPic 时事图片
+	 * @apiSuccess {String} items.content 时事内容
+	 * @apiSuccess {Long} items.typeId 时事类型
+	 * @apiSuccess {Long} items.brows 浏览量
+	 * @apiSuccess {String} items.subordinate 发布地
 	 * @apiSuccess {String} gmtCreated 发布时间 
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
@@ -130,8 +130,8 @@ public interface AffairsApi {
 	 * @apiSuccess {String} code 结果码
 	 * @apiSuccess {String} message 消息说明
 	 * @apiSuccess {object} tags 
-	 * @apiSuccess {long} typeid 类别id
-	 * @apiSuccess {String} typeName 类别名
+	 * @apiSuccess {long} tags.typeid 类别id
+	 * @apiSuccess {String} tags.typeName 类别名
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
 	 * {
