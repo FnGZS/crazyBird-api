@@ -684,4 +684,584 @@ public interface SecondaryApi {
 	 * 
 	 */
 	void createSecondaryGoods();
+	
+    /**
+	 * @api {GET} /secondary/comments  得到对应商品的评论回复
+	 * @apiName getSecondaryGoodsComments
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 得到对应商品的评论回复
+	 * 
+	 * @apiParam {Long} Id
+	 * @apiParam {Long} userId
+	 * @apiParam {int} pageNo  当前页
+	 * @apiParam {int} pageSize  页面大小
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {int} pageNo 当前页
+	 * @apiSuccess {int} pageSize 页面大小
+	 * @apiSuccess {int} pageCount总页数
+	 * @apiSuccess {int} recordCount总记录数
+	 * @apiSuccess {int} commentsNum 父评论数
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": "",
+     *"pageNo": 1,
+     *"pageSize": 20,
+     *"pageCount": 1,
+     *"recordCount": 19,
+     *"commentsNum": 39,
+     *"list": [
+     *   {
+     *       "id": 48,
+     *       "schoolNum": 413150235,
+     *       "content": "dddd",
+     *       "gmtCreated": "2018-12-20 14:38:07",
+     *       "headImgUrl": "https://wx.qlogo.cn/mmopen/vi_32/IsQaADpVic2dp2icVwMfFByQrxwulcNdFYU2iaibYoJibCHAFayISjm6Hl74rUxMVdl0PdQhOeziaKptUZSB0yINhaVw/132",
+     *       "commentName": "Zhao、JW🐬",
+     *       "items": [
+     *           {
+     *               "schoolNum": 413150236,
+     *               "content": "sb",
+     *              "gmtCreated": "2018-12-20 14:38:23",
+     *               "headImgUrl": "https://wx.qlogo.cn/mmopen/vi_32/ibUdM5jBGXtEfeCjHrlFYufDyOIRnPIib3Q3lmyVN3EJTZ8c6yuFw6icI2rm0yWJQCoAr1xmHjaWEyCEZyiceQuKJw/132",
+     *               "replyName": "三好学生等等🍀",
+     *               "replyedName": "Zhao、JW🐬"
+     *           }
+     *       ]
+     *   },
+     *   {
+     *       "id": 45,
+     *       "schoolNum": 413150238,
+     *       "content": "不知道",
+     *       "gmtCreated": "2018-12-20 14:33:13",
+     *       "headImgUrl": "https://wx.qlogo.cn/mmopen/vi_32/xF183KBwd3dN4mQk483ZNr8vUu94nGibhqmHghSKrEw7Gcr4rpKErFGrCbnNmSoj2v4icnmmEWKmPKTFmppELpVQ/132",
+     *       "commentName": "Effort🐬",
+     *       "items": []
+     *   },
+     *]
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void getSecondaryGoodsComments();
+	
+    /**
+	 * @api {GET} /secondary/commentMessage  获取用户未读的评论回复
+	 * @apiName getCommentMessage
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 获取用户未读的评论回复
+	 * 
+	 * @apiParam {Long} userId
+	 * @apiParam {int} pageNo  当前页
+	 * @apiParam {int} pageSize  页面大小
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {int} pageNo 当前页
+	 * @apiSuccess {int} pageSize 页面大小
+	 * @apiSuccess {int} pageCount总页数
+	 * @apiSuccess {int} recordCount总记录数
+	 * @apiSuccess {object} list
+	 * @apiSuccess {Long} list.id
+	 * @apiSuccess {Long} list.goodsId 商品id
+	 * @apiSuccess {String} list.content 评论或回复内容
+	 * @apiSuccess {String} list.gmtCreated 
+	 * @apiSuccess {String} list.headImgUrl
+	 * @apiSuccess {String} list.replyName
+	 * @apiSuccess {int} list.isView
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": "",
+     *"pageNo": 1,
+     *"pageSize": 20,
+     *"pageCount": 1,
+     *"recordCount": 12,
+     *"list": [
+     *   {
+     *       "id": 57,
+     *       "goodsId": 5,
+     *       "content": "吧啦",
+     *       "gmtCreated": "2018-12-21 09:48:28",
+     *       "headImgUrl": "https://wx.qlogo.cn/mmopen/vi_32/xF183KBwd3dN4mQk483ZNr8vUu94nGibhqmHghSKrEw7Gcr4rpKErFGrCbnNmSoj2v4icnmmEWKmPKTFmppELpVQ/132",
+     *       "replyName": "Effort🐬",
+     *       "isView": 0
+     *   },
+     *   {
+     *       "id": 53,
+     *       "goodsId": 1,
+     *       "content": "你哪位",
+     *       "gmtCreated": "2018-12-20 22:03:23",
+     *       "headImgUrl": "https://wx.qlogo.cn/mmopen/vi_32/xF183KBwd3dN4mQk483ZNr8vUu94nGibhqmHghSKrEw7Gcr4rpKErFGrCbnNmSoj2v4icnmmEWKmPKTFmppELpVQ/132",
+     *       "replyName": "Effort🐬",
+     *       "isView": 1
+     *   }
+     *]
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void getCommentMessage();
+	
+    /**
+	 * @api {GET} /secondary/message/{id}  获取用户未读信息的数量
+	 * @apiName getSecondaryGoodsCommentsCount
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 获取用户未读信息的数量
+	 * 
+	 * @apiParam {Long} id
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {int} sum
+	 * @apiSuccess {object} list
+	 * @apiSuccess {int} list.num
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": "",
+     *"sum": 2,
+     *"list": [
+     *   {
+     *       "num": 2
+     *   },
+     *   {
+     *       "num": 0
+     *   }
+     *]
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void getSecondaryGoodsCommentsCount();
+	
+    /**
+	 * @api {POST} /secondary/comment  评论
+	 * @apiName createSecondaryGoodsComment
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 评论
+	 * 
+	 * @apiParam {Long} id
+	 * @apiParam {Long} goodsId 商品id
+	 * @apiParam {Long} userId 回复人学号
+	 * @apiParam {String} content 评论或回复内容
+	 * @apiParam {Long} replyedId 被回复人学号
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": ""
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void createSecondaryGoodsComment();
+	
+    /**
+	 * @api {POST} /secondary/reply  回复
+	 * @apiName createSecondaryGoodsReply
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 回复
+	 * 
+	 * @apiParam {Long} id
+	 * @apiParam {Long} goodsId 商品id
+	 * @apiParam {Long} userId 回复人学号
+	 * @apiParam {String} content 评论或回复内容
+	 * @apiParam {Long} replyedId 被回复人学号
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": ""
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void createSecondaryGoodsReply();
+	
+    /**
+	 * @api {GET} /secondary/userAddress/{id}  得到用户地址列表
+	 * @apiName getUserAddress
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 得到用户地址列表
+	 * 
+	 * @apiParam {Long} id
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {object} list
+	 * @apiSuccess {Long} list.id
+	 * @apiSuccess {Long} list.userId 用户id
+	 * @apiSuccess {String} list.name 姓名
+	 * @apiSuccess {String} list.telephone 电话 
+	 * @apiSuccess {String} list.address 地址
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": "",
+     * "list": []
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void getUserAddress();
+	
+    /**
+	 * @api {PUT} /secondary/userAddress/update  修改用户地址
+	 * @apiName updatetUserAddress
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 修改用户地址
+	 * 
+	 * @apiParam {Long} id
+	 * @apiParam {Long} userId 用户id
+	 * @apiParam {String} name 姓名
+	 * @apiParam {String} telephone 电话 
+	 * @apiParam {String} address 地址
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": ""
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void updatetUserAddress();
+	
+    /**
+	 * @api {POST} /secondary/userAddress/add  添加用户地址
+	 * @apiName addUserAddress
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 添加用户地址
+	 * 
+	 * @apiParam {Long} id
+	 * @apiParam {Long} userId 用户id
+	 * @apiParam {String} name 姓名
+	 * @apiParam {String} telephone 电话 
+	 * @apiParam {String} address 地址
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *"code": "200",
+     *"message": ""
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void addUserAddress();
+	
+    /**
+	 * @api {GET} /secondary/sellList  我卖出的
+	 * @apiName getSellList
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 我卖出的
+	 * 
+	 * @apiParam {int} status
+	 * @apiParam {int} pageNo  当前页
+	 * @apiParam {int} pageSize  页面大小
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {int} pageNo 当前页
+	 * @apiSuccess {int} pageSize 页面大小
+	 * @apiSuccess {int} pageCount总页数
+	 * @apiSuccess {int} recordCount总记录数
+	 * @apiSuccess {object} tags
+	 * @apiSuccess {Long} tags.id
+	 * @apiSuccess {Long} tags.userId 用户id
+	 * @apiSuccess {int} tags.views 姓名
+	 * @apiSuccess {int} tags.goodsNum 电话 
+	 * @apiSuccess {String} tags.userName 名字
+	 * @apiSuccess {String} tags.headImgUrl
+	 * @apiSuccess {String} tags.goodsTitle 商品标题
+	 * @apiSuccess {String} tags.goodsContent 商品内容
+	 * @apiSuccess {String} tags.goodsImg 商品图片
+	 * @apiSuccess {String} tags.postion
+	 * @apiSuccess {String} tags.goodsType 商品类型
+	 * @apiSuccess {String} tags.goodsWay 售卖形式
+	 * @apiSuccess {String} tags.tradingWay 交易方式
+	 * @apiSuccess {String} tags.price 商品价格
+	 * @apiSuccess {String} tags.oldPrice 原价
+	 * @apiSuccess {String} tags.gmtCreated
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *   "code": "200",
+     *  "message": "",
+     *  "pageNo": 1,
+     *  "pageSize": 20,
+     *  "pageCount": 0,
+     *  "recordCount": 0,
+     *  "tags": []
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void getSellList();
+	
+    /**
+	 * @api {GET} /secondary/purchaseList  我买入的
+	 * @apiName getPurchase
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 我买入的
+	 * 
+	 * @apiParam {int} pageNo  当前页
+	 * @apiParam {int} pageSize  页面大小
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {int} pageNo 当前页
+	 * @apiSuccess {int} pageSize 页面大小
+	 * @apiSuccess {int} pageCount总页数
+	 * @apiSuccess {int} recordCount总记录数
+	 * @apiSuccess {object} items
+	 * @apiSuccess {Long} items.id
+	 * @apiSuccess {Long} items.userId 用户id
+	 * @apiSuccess {int} items.views 姓名
+	 * @apiSuccess {int} items.goodsNum 电话 
+	 * @apiSuccess {String} items.userName 名字
+	 * @apiSuccess {String} items.headImgUrl
+	 * @apiSuccess {String} items.goodsTitle 商品标题
+	 * @apiSuccess {String} items.goodsContent 商品内容
+	 * @apiSuccess {String} items.goodsImg 商品图片
+	 * @apiSuccess {String} items.postion
+	 * @apiSuccess {String} items.goodsType 商品类型
+	 * @apiSuccess {String} items.goodsWay 售卖形式
+	 * @apiSuccess {String} items.tradingWay 交易方式
+	 * @apiSuccess {String} items.price 商品价格
+	 * @apiSuccess {String} items.oldPrice 原价
+	 * @apiSuccess {String} items.gmtCreated
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *   "code": "200",
+     *  "message": "没有更多了",
+     *  "pageNo": 1,
+     *  "pageSize": 20,
+     *   "pageCount": 0,
+     *   "recordCount": 0,
+     *  "items": []
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void getPurchase();
+	
+    /**
+	 * @api {POST} /secondary/collection  收藏商品
+	 * @apiName collection
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 收藏商品
+	 * 
+	 * @apiParam {Long} goodsId 商品id
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+     *{
+     *	"code": "200",
+     *	"message": "想要成功"
+     *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void collection();
+	
+    /**
+	 * @api {GET} /secondary/collectionList  收藏的商品列表
+	 * @apiName collectionList
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 收藏的商品列表
+	 * 
+	 * @apiParam {int} status
+	 * @apiParam {int} pageNo  当前页
+	 * @apiParam {int} pageSize  页面大小
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {int} pageNo 当前页
+	 * @apiSuccess {int} pageSize 页面大小
+	 * @apiSuccess {int} pageCount总页数
+	 * @apiSuccess {int} recordCount总记录数
+	 * @apiSuccess {object} items
+	 * @apiSuccess {Long} items.id
+	 * @apiSuccess {Long} items.userId 用户id
+	 * @apiSuccess {int} items.views 姓名
+	 * @apiSuccess {int} items.goodsNum 电话 
+	 * @apiSuccess {String} items.userName 名字
+	 * @apiSuccess {String} items.headImgUrl
+	 * @apiSuccess {String} items.goodsTitle 商品标题
+	 * @apiSuccess {String} items.goodsContent 商品内容
+	 * @apiSuccess {String} items.goodsImg 商品图片
+	 * @apiSuccess {String} items.postion
+	 * @apiSuccess {String} items.goodsType 商品类型
+	 * @apiSuccess {String} items.goodsWay 售卖形式
+	 * @apiSuccess {String} items.tradingWay 交易方式
+	 * @apiSuccess {String} items.price 商品价格
+	 * @apiSuccess {String} items.oldPrice 原价
+	 * @apiSuccess {String} items.gmtCreated
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 *{
+	 *   "code": "200",
+	 *   "message": "没有更多了",
+	 *   "pageNo": 1,
+	 *   "pageSize": 20,
+	 *   "pageCount": 0,
+	 *   "recordCount": 0,
+	 *   "items": []
+	 *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void collectionList();
+	
+    /**
+	 * @api {GET} /secondary/isCollection  是否收藏
+	 * @apiName isCollection
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 是否收藏
+	 * 
+	 * @apiParam {Long} goodsId 商品id
+	 * @apiParam {int} pageNo  当前页
+	 * @apiParam {int} pageSize  页面大小
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 *{
+	 *   "code": "200",
+	 *   "message": "未想要"
+	 *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void isCollection();
+	
+    /**
+	 * @api {GET} /secondary/quantity  收藏数量
+	 * @apiName collectionNum
+	 * @apiGroup secondary
+	 * @apiVersion 0.0.1
+	 * @apiDescription 收藏数量
+	 * 
+	 * @apiParam {Long} goodsId 商品id
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {int} quantity 数量
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 *{
+	 *    "code": "200",
+	 *    "message": "",
+	 *    "quantity": 2
+	 *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+	void collectionNum();
 }

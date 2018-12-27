@@ -844,4 +844,32 @@ public interface LostApi {
 	 */
     void lostUpdate();
     
+    /**
+	 * @api {POST} /lost/lostExamineUpdate 审核
+	 * @apiName lostExamineUpdate
+	 * @apiGroup lost
+	 * @apiVersion 0.0.1
+	 * @apiDescription 审核
+	 * 
+	 * @apiParam {int} id 
+	 * @apiParam {int} isExamine 审核状态
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 *{
+	 *   "code": "200",
+	 *   "message": "成功"
+	 *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":"400",
+	 *     "message":""
+	 * }
+	 * 
+	 */
+    void lostExamineUpdate();
+    
 }
