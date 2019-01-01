@@ -32,19 +32,20 @@ public interface LostApi {
 	 * @apiSuccess {Integer} pageCount 总页数
 	 * @apiSuccess {Integer} recordCount 总记录数
 	 * @apiSuccess {object} items 列表
-	 * @apiSuccess {Integer} id 失物id
-	 * @apiSuccess {String} title 失物标题
-	 * @apiSuccess {Integer} publisher 失物发布者id
-	 * @apiSuccess {String} foundPic 失物图片
-	 * @apiSuccess {String} content 失物内容
-	 * @apiSuccess {String} contact 联系方式
-	 * @apiSuccess {String} address 地址
-	 * @apiSuccess {Integer} messageId 物品分类
-	 * @apiSuccess {Integer} typeId 失物分类id
-	 * @apiSuccess {Integer} isExamine 失物审核状态
-	 * @apiSuccess {Integer} brow 失物浏览量
-	 * @apiSuccess {Integer} isSolve 失物解决状态
-	 * @apiSuccess {String} gmtCreated 发布时间 
+	 * @apiSuccess {Integer} items.id 失物id
+	 * @apiSuccess {String} items.title 失物标题
+	 * @apiSuccess {String} items.personal 个人信息
+	 * @apiSuccess {Integer} items.publisher 失物发布者id
+	 * @apiSuccess {String} items.foundPic 失物图片
+	 * @apiSuccess {String} items.content 失物内容
+	 * @apiSuccess {String} items.contact 联系方式
+	 * @apiSuccess {String} items.address 地址
+	 * @apiSuccess {Integer} items.messageId 物品分类
+	 * @apiSuccess {Integer} items.typeId 失物分类id
+	 * @apiSuccess {Integer} items.isExamine 失物审核状态
+	 * @apiSuccess {Integer} items.brow 失物浏览量
+	 * @apiSuccess {Integer} items.isSolve 失物解决状态
+	 * @apiSuccess {String} items.gmtCreated 发布时间 
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
 	 * {
@@ -111,6 +112,7 @@ public interface LostApi {
 	 * @apiSuccess {object} details 列表
 	 * @apiSuccess {Integer} id 失物id
 	 * @apiSuccess {String} title 失物标题
+	 * @apiSuccess {String} personal 个人信息
 	 * @apiSuccess {Integer} publisher 失物发布者id
 	 * @apiSuccess {String} foundPic 失物图片
 	 * @apiSuccess {String} content 失物内容
@@ -274,6 +276,7 @@ public interface LostApi {
 	 * @apiVersion 0.0.1
 	 * @apiDescription 录入失物信息
 	 * 
+	 * @apiParam {String} personal 个人信息
 	 * @apiParam {String} title  失物标题
 	 * @apiParam {String} foundPic  失物图片
 	 * @apiParam {String} content  详情
