@@ -80,4 +80,81 @@ public interface LiveApi {
 	 * }
 	 * */
 	void getPlayUrlDetail(Long id) ;
+	
+	/**
+	 * @api {get} /live/getGiftList  得到礼物列表
+	 * @apiName getLiveGiftList()
+	 * @apiGroup live
+	 * @apiVersion 0.0.1
+	 * @apiDescription 得到礼物列表
+	 * 
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {object} list 
+	 * @apiSuccess {int} list.id 
+	 * @apiSuccess {String}  list.giftName 礼物名称
+	 * @apiSuccess {String} list.giftImage 礼物图片
+	 * @apiSuccess {String} list.giftPrice 礼物价格
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 *{
+	 *    "code": "200",
+	 *    "message": "",
+	 *    "list": [
+	 *        {
+	 *            "id": 1,
+	 *            "giftName": "鱼丸",
+	 *            "giftImage": "xxxxx.jpg",
+	 *            "giftPrice": "0.01"
+	 *        }
+	 *    ]
+	 *}
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * */
+	void getLiveGiftList();
+	  /**
+		 * @api {POST} /live/createGiftList  礼物下单
+		 * @apiName createGiftOrder
+		 * @apiGroup live
+		 * @apiVersion 0.0.1
+		 * @apiDescription 礼物下单
+		 * 
+		 * @apiParam {int} giftId  礼物Id
+		 * @apiParam {double} totalPrice  价格
+		 * @apiParam {int} liveId  直播间房间号
+		 * @apiParam {int} giftNum  礼物数量
+		 * @apiParam {String} platCode （重新获取code）
+		 * @apiParam {double} fee  价格(跟totalPrice一样，数值类型即可，如：1.00)
+		 * 
+		 * @apiSuccess {String} code 结果码
+		 * @apiSuccess {String} message 消息说明
+		 * @apiSuccess {object} orderInfo
+		 * @apiSuccess {String} orderInfo.appId 
+		 * @apiSuccess {String} orderInfo.timeStamp 时间戳
+		 * @apiSuccess {String} orderInfo.nonceStr
+		 * @apiSuccess {String} orderInfo.pkg
+		 * @apiSuccess {String} orderInfo.signType
+		 * @apiSuccess {String} orderInfo.paySign
+		 * @apiSuccessExample Success-Response:
+		 * HTTP/1.1 200
+		 *{
+		 *    "code": "200",
+		 *    "message": "下单成功",
+		 *    "orderInfo": null
+		 *}
+		 * @apiErrorExample Error-Response:
+		 * HTTP/1.1 400
+		 * {
+		 *     "code":"400",
+		 *     "message":""
+		 * }
+		 * 
+		 */
+	void createGiftOrder();
 }
