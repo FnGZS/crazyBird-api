@@ -73,6 +73,7 @@ public interface ContactsApi {
 	 * @apiSuccess {long} id 
 	 * @apiSuccess {String} name 姓名
 	 * @apiSuccess {String} phone 电话
+	 * @apiSuccess {String} phone2 短号
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
 	 *{
@@ -82,12 +83,15 @@ public interface ContactsApi {
 	 *   "pageSize": 0,
 	 *   "pageCount": 0,
 	 *   "recordCount": 0,
-	 *   "details": {
-	 *       "id": 1,
-	 *       "name": "鸡柳数薯条奶昂",
-	 *       "phone": "15857542186"
-	 *   }
-	 *}             
+	 *   "details": [
+	 *       {
+	 *           "id": 1,
+	 *           "name": "鸡柳数薯条奶昂",
+	 *           "phone": "15857542186",
+	 *           "phone2": "213"
+	 *       }
+	 *   ]
+	 *}            
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
 	 * {
