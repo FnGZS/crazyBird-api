@@ -68,30 +68,27 @@ public interface ContactsApi {
 	 * @apiParam {Long} id  
 	 * 
 	 * @apiSuccess {String} code 结果码
-	 * @apiSuccess {String} message 消息说明
-	 * @apiSuccess {object} details  
+	 * @apiSuccess {String} message 消息说明 
 	 * @apiSuccess {long} id 
+	 * @apiSuccess {String} typeName 类型
 	 * @apiSuccess {String} name 姓名
 	 * @apiSuccess {String} phone 电话
 	 * @apiSuccess {String} phone2 短号
+	 * @apiSuccess {String} manger 业务
+	 * @apiSuccess {String} pic 图片
 	 * @apiSuccessExample Success-Response:
 	 * HTTP/1.1 200
 	 *{
 	 *   "code": "200",
 	 *   "message": "",
-	 *   "pageNo": 0,
-	 *   "pageSize": 0,
-	 *   "pageCount": 0,
-	 *   "recordCount": 0,
-	 *   "details": [
-	 *       {
-	 *           "id": 1,
-	 *           "name": "鸡柳数薯条奶昂",
-	 *           "phone": "15857542186",
-	 *           "phone2": "213"
-	 *       }
-	 *   ]
-	 *}            
+	 *   "id": 1,
+	 *   "typeName": "南区食堂三楼",
+	 *   "name": "众利餐饮",
+	 *   "phone": "13515757603",
+	 *   "phone2": "667603",
+	 *   "manger": "",
+	 *   "pic": "[\"https://www.sxscott.com/crazyBirdimg/contacts/zhongli1\",\"https://www.sxscott.com/crazyBirdimg/contacts/zhongli2\"]"
+	 *}      
 	 * @apiErrorExample Error-Response:
 	 * HTTP/1.1 400
 	 * {
@@ -101,4 +98,55 @@ public interface ContactsApi {
 	 * 
 	 * */
 	void getContactsDetail();
+	/**
+	 * @api {get} /contacts/getContactsTypeList/{id}  获取某个类型列表
+	 * @apiName getContactsTypeList
+	 * @apiGroup contacts
+	 * @apiVersion 0.0.1
+	 * @apiDescription  获取某个类型列表
+	 * 
+	 * @apiParam {Long} id  
+	 * 
+	 * @apiSuccess {String} code 结果码
+	 * @apiSuccess {String} message 消息说明
+	 * @apiSuccess {object} list  
+	 * @apiSuccess {long} id 
+	 * @apiSuccess {String} list.typeName 类型
+	 * @apiSuccess {String} list.name 姓名
+	 * @apiSuccess {String} list.phone 电话
+	 * @apiSuccess {String} list.phone2 短号
+	 * @apiSuccess {String} list.pic 图片
+	 * @apiSuccessExample Success-Response:
+	 * HTTP/1.1 200
+	 *{
+	 *   "code": "200",
+	 *   "message": "",
+	 *   "list": [
+	 *       {
+	 *           "id": 8,
+	 *           "typeName": "北区食堂三楼",
+	 *           "name": "新昌炒年糕",
+	 *           "phone": "17816537439 ",
+	 *           "phone2": "587439",
+	 *           "pic": "[\"https://www.sxscott.com/crazyBirdimg/contacts/xinchangniangao1.jpg\",\"https://www.sxscott.com/crazyBirdimg/contacts/xinchangniangao2.jpg\"]"
+	 *       },
+	 *       {
+	 *           "id": 9,
+	 *           "typeName": "北区食堂三楼",
+	 *           "name": "黑泷堂",
+	 *           "phone": "15805858893",
+	 *           "phone2": "",
+	 *           "pic": "[\"https://www.sxscott.com/crazyBirdimg/contacts/heilongtang1.jpg\",\"https://www.sxscott.com/crazyBirdimg/contacts/heilongtang2.jpg\"]"
+	 *       }
+	 *   ]
+	 *}     
+	 * @apiErrorExample Error-Response:
+	 * HTTP/1.1 400
+	 * {
+	 *     "code":400,
+	 *     "message":""
+	 * }
+	 * 
+	 * */
+	void getContactsTypeList();
 }
