@@ -662,10 +662,12 @@ public interface SecondaryApi {
 	 * @apiParam {String} goodsContent 商品内容
 	 * @apiParam {String} goodsImag 商品图片
 	 * @apiParam {String} postion 位置
+	 * @apiParam {String} telephone 联系方式
 	 * @apiParam {int} goodsType  商品类型
 	 * @apiParam {int} goodsWay  售卖形式
 	 * @apiParam {int} tradingWay 交易方式
 	 * @apiParam {BigDecimal} price 价格
+	 * @apiParam {BigDecimal} oldPrice 原价
 	 * 
 	 * @apiSuccess {String} code 结果码
 	 * @apiSuccess {String} message 消息说明
@@ -1264,4 +1266,144 @@ public interface SecondaryApi {
 	 * 
 	 */
 	void collectionNum();
+	
+	  /**
+		 * @api {GET} /secondary/violationMessage/{id}  获取审核未通过信息
+		 * @apiName getSecondaryMessage
+		 * @apiGroup secondary
+		 * @apiVersion 0.0.1
+		 * @apiDescription 获取审核未通过信息
+		 * 
+		 * @apiParam {Long} id 用户id
+		 * 
+		 * @apiSuccess {String} code 结果码
+		 * @apiSuccess {String} message 消息说明
+		 * @apiSuccess {object} list 
+		 * @apiSuccess {int} list.id 
+		 * @apiSuccess {String} list.goodsTitle 商品标题
+		 * @apiSuccess {String} list.title 信息标题
+		 * @apiSuccess {String} list.isView 是否被看过
+		 * @apiSuccess {String} list.message 信息内容
+		 * @apiSuccess {String} list.gmtCreated 时间
+		 * @apiSuccessExample Success-Response:
+		 * HTTP/1.1 200
+		 *{
+		 *    "code": "200",
+		 *    "message": "",
+		 *    "list": [
+		 *        {
+		 *            "id": 1,
+		 *            "goodsTitle": "黑蛇黑寡妇蜘蛛X 经济版87键 悬浮式机械键盘。（雷蛇）黑蛇黑寡妇蜘蛛X 经济版87键 悬浮式机械键盘。（雷蛇）",
+		 *            "title": "审核未通过",
+		 *            "isView": "0",
+		 *            "message": "内容违规",
+		 *            "gmtCreated": "2018-12-21 14:50:29"
+		 *        }
+		 *    ]
+		 *}
+		 * @apiErrorExample Error-Response:
+		 * HTTP/1.1 400
+		 * {
+		 *     "code":"400",
+		 *     "message":""
+		 * }
+		 * 
+		 */
+	void getSecondaryMessage();
+	
+
+	  /**
+		 * @api {post} /secondary/commentMessage/delete  消息中心删除评论回复提醒消息
+		 * @apiName updateSecondaryCommentsNoSee
+		 * @apiGroup secondary
+		 * @apiVersion 0.0.1
+		 * @apiDescription 消息中心删除评论回复提醒消息
+		 * 
+		 * @apiParam {Long} id 消息id
+		 * 
+		 * @apiSuccess {String} code 结果码
+		 * @apiSuccess {String} message 消息说明
+		 * @apiSuccessExample Success-Response:
+		 * HTTP/1.1 200
+		 *{
+		 *    "code": "200",
+		 *    "message": ""
+		 *}
+		 * @apiErrorExample Error-Response:
+		 * HTTP/1.1 400
+		 * {
+		 *     "code":"400",
+		 *     "message":""
+		 * }
+		 * 
+		 */
+	void updateSecondaryCommentsNoSee();
+	  /**
+		* @api {post} /secondary/violationMessage/delete/{id}   消息中心删除评审核提醒消息
+		* @apiName updateSecondaryMessageNoSee
+		* @apiGroup secondary
+		* @apiVersion 0.0.1
+		* @apiDescription  消息中心删除评审核提醒消息
+		* 
+		* @apiParam {Long} id 消息id
+		* 
+		* @apiSuccess {String} code 结果码
+		* @apiSuccess {String} message 消息说明
+		* @apiSuccessExample Success-Response:
+		* HTTP/1.1 200
+	    *{
+		*    "code": "200",
+		*    "message": ""
+		*}
+		* @apiErrorExample Error-Response:
+		* HTTP/1.1 400
+		* {
+		*     "code":"400",
+		*     "message":""
+		* }
+		* 
+		*/	
+	void updateSecondaryMessageNoSee();
+	  /**
+		 * @api {GET} /secondary/violationDetail/{id}  查看审核详细信息
+		 * @apiName getSecondaryMessageDetail
+		 * @apiGroup secondary
+		 * @apiVersion 0.0.1
+		 * @apiDescription 查看审核详细信息
+		 * 
+		 * @apiParam {Long} id 用户id
+		 * 
+		 * @apiSuccess {String} code 结果码
+		 * @apiSuccess {String} message 消息说明
+		 * @apiSuccess {int} id 
+		 * @apiSuccess {String} goodsTitle 商品标题
+		 * @apiSuccess {String} title 信息标题
+		 * @apiSuccess {String} isView 是否被看过
+		 * @apiSuccess {String} message 信息内容
+		 * @apiSuccess {String} gmtCreated 时间
+		 * @apiSuccessExample Success-Response:
+		 * HTTP/1.1 200
+		 *{
+		 *    "code": "200",
+		 *    "message": "",
+		 *    "id": 1,
+		 *    "goodsTitle": "黑蛇黑寡妇蜘蛛X 经济版87键 悬浮式机械键盘。（雷蛇）黑蛇黑寡妇蜘蛛X 经济版87键 悬浮式机械键盘。（雷蛇）",
+		 *    "title": "审核未通过",
+		 *    "isView": "0",
+		 *    "message": "内容违规",
+		 *    "gmtCreated": "2018-12-21 14:50:29"
+		 * 
+		 *   
+		 *}
+		 * @apiErrorExample Error-Response:
+		 * HTTP/1.1 400
+		 * {
+		 *     "code":"400",
+		 *     "message":""
+		 * }
+		 * 
+		 */
+	void getSecondaryMessageDetail();
+	
+	
 }
